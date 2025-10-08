@@ -3,9 +3,9 @@
 To control the position of motor having the following specifications using MATLAB.<br>
 (J)     moment of inertia of the rotor =    3.2284E-6 kg.m^2<br>
 (b)     motor viscous friction constant =    3.5077E-6 N.m.s<br>
-(Ktf)    motor torque constant   =           0.0274 N.m/Amp<br>
+(Kt)    motor torque constant   =           0.0274 N.m/Amp<br>
 (R)     electric resistance  =              4 Ohm<br>
-(L)     electric inductance  =              2.75E-6H<br>
+(L)     electric inductance  =              2.75e-6<br>
 ## Apparatus Required:
 Computer with MATLAB software
 ## Theory: 
@@ -59,22 +59,22 @@ The equation (1) can be written as <br>
 ```
 j = 3.2284e-6
 b = 3.5077e-6
-ktf = 0.0274
+kt = 0.0274
 R = 4
-L = 2.75E-6
+L = 2.75e-6
 
 s = tf('s')
 
-open_sys = ktf/ ((j*s*s+b*s)*(R+L*s))
+ol_sys = kt/ ((j*s*s+b*s)*(R+L*s))
 
 subplot(2,1,1)
-step(open_sys)
+step(ol_sys)
 title('Open Loop Response')
 
-close_sys = feedback(open_sys,1)
+cl_sys = feedback(ol_sys,1)
 
 subplot(2,1,2)
-step(close_sys)
+step(cl_sys)
 title('Close Loop Response')
 ```
 
