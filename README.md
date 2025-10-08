@@ -56,7 +56,33 @@ The equation (1) can be written as <br>
 
 ## Program
 
+```
+j = 3.2284e-6
+b = 3.5077e-6
+ktf = 0.0274
+R = 4
+L = 2.75E-6
+
+s = tf('s')
+
+open_sys = ktf/ ((j*s*s+b*s)*(R+L*s))
+
+subplot(2,1,1)
+step(open_sys)
+title('Open Loop Response')
+
+close_sys = feedback(open_sys,1)
+
+subplot(2,1,2)
+step(close_sys)
+title('Close Loop Response')
+```
+
 ## Output
+
+
+<img width="866" height="776" alt="image" src="https://github.com/user-attachments/assets/d6ef3667-2d49-49c9-bc24-4e68b4dc3dc4" />
+
 
 ## Result
 Thus, the position of dc motor is controlled using MATLAB. 
